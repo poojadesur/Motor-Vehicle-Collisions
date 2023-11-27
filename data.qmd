@@ -2,4 +2,12 @@
 
 ## Description
 
+The data includes information about the following:
+
+* The date, time, and location of the crash
+* The type of crash (e.g., car-to-car, car-to-pedestrian)
+* The severity of the crash (e.g., property damage only, injuries, fatalities)
+* The factors that contributed to the crash (e.g., speeding, drunk driving, distracted driving)
+* The demographics of the people involved in the crash (e.g., age, gender, race/ethnicity)
+
 ## Missing value analysis
