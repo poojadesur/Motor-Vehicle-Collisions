@@ -6,12 +6,12 @@ execute:
   echo: true
 
 book:
-  title: "YOUR PROJECT TITLE"
+  title: "Motor Vehicle Collisions"
   author:
-    - AUTHOR1 (UNI1)
-    - AUTHOR2 (UNI2)
-  repo-url: https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME
-  date: today
+    - Tushar Bura (tb3077)
+    - Pooja Desur (pgd2120)
+  repo-url: https://github.com/poojadesur/Motor-Vehicle-Collisions
+  date: November 27, 2023git
   page-footer:
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
