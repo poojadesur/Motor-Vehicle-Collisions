@@ -1,8 +1,22 @@
 # Data
 
-## Description
+## Technical Description
 
-The data includes information about the following:
+### Data Source:
+
+The data is taken from the official data catalog of the United States government (data.gov).
+
+### Data Collection: 
+The Motor Vehicle Collisions crash data contains details on the crash events. Each row represents a crash event. It contain information from all police reported motor vehicle collisions in NYC. The police report (MV104-AN) is required to be filled out for collisions where someone is injured or killed, or where there is at least $1000 worth of damage.\
+It should be noted that the data is preliminary and subject to change when the MV-104AN forms are amended based on revised crash details. The most accurate, up to date statistics on traffic fatalities can be found on NYPD Motor Vehicle Collisions page, which is updated weekly.
+
+### Information about the data: 
+* The data is available in multiple formats but we have used the .csv file. 
+* The data contains entries from 2012 to as latest as Nov 25, 2023 and it is updated every week 
+* There are 29 features and 2,044,903 entries of crashes.
+\
+
+The data includes information about the following:\
 
 * The date, time, and location of the crash
 * The type of crash (e.g., car-to-car, car-to-pedestrian)
@@ -10,6 +24,12 @@ The data includes information about the following:
 * The factors that contributed to the crash (e.g., speeding, drunk driving, distracted driving)
 * The demographics of the people involved in the crash (e.g., age, gender, race/ethnicity)
 
+### Issues with the data: 
+One problems with the data is that there are a lot of missing values in many features that need to be handled.
+
+### How to import the data:
+We downloaded the data and read it locally as a csv file to analyse it.
+=======
 
 ## Research Plan
 
@@ -44,4 +64,8 @@ COLLISION_ID: This unique identifier serves as the primary key for the dataset, 
 In summary, the dataset's rich array of variables facilitates a comprehensive exploration of the spatial, temporal, and causal dimensions of car crash collisions in the city. By leveraging these variables, we can derive meaningful insights into the factors influencing collision patterns and formulate informed recommendations for targeted interventions and policy improvements.
 
 
+
 ## Missing value analysis
+
+
+

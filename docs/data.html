@@ -142,9 +142,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
+
+  <li><a href="#technical-description" id="toc-technical-description" class="nav-link active" data-scroll-target="#technical-description"><span class="header-section-number">2.1</span> Technical Description</a>
+  <ul class="collapse">
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source"><span class="header-section-number">2.1.1</span> Data Source:</a></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection"><span class="header-section-number">2.1.2</span> Data Collection:</a></li>
+  <li><a href="#information-about-the-data" id="toc-information-about-the-data" class="nav-link" data-scroll-target="#information-about-the-data"><span class="header-section-number">2.1.3</span> Information about the data:</a></li>
+  <li><a href="#issues-with-the-data" id="toc-issues-with-the-data" class="nav-link" data-scroll-target="#issues-with-the-data"><span class="header-section-number">2.1.4</span> Issues with the data:</a></li>
+  <li><a href="#how-to-import-the-data" id="toc-how-to-import-the-data" class="nav-link" data-scroll-target="#how-to-import-the-data"><span class="header-section-number">2.1.5</span> How to import the data:</a></li>
+  </ul></li>
+  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</a></li>
+=======
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">2.1</span> Description</a></li>
   <li><a href="#research-plan" id="toc-research-plan" class="nav-link" data-scroll-target="#research-plan"><span class="header-section-number">2.2</span> Research Plan</a></li>
   <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</a></li>
+
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/poojadesur/Motor-Vehicle-Collisions/edit/main/data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/poojadesur/Motor-Vehicle-Collisions/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -168,9 +180,33 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+
+<section id="technical-description" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="technical-description"><span class="header-section-number">2.1</span> Technical Description</h2>
+<section id="data-source" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="data-source"><span class="header-section-number">2.1.1</span> Data Source:</h3>
+<p>The data is taken from the official data catalog of the United States government (data.gov).</p>
+</section>
+<section id="data-collection" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="data-collection"><span class="header-section-number">2.1.2</span> Data Collection:</h3>
+<p>The Motor Vehicle Collisions crash data contains details on the crash events. Each row represents a crash event. It contain information from all police reported motor vehicle collisions in NYC. The police report (MV104-AN) is required to be filled out for collisions where someone is injured or killed, or where there is at least $1000 worth of damage.<br>
+It should be noted that the data is preliminary and subject to change when the MV-104AN forms are amended based on revised crash details. The most accurate, up to date statistics on traffic fatalities can be found on NYPD Motor Vehicle Collisions page, which is updated weekly.</p>
+</section>
+<section id="information-about-the-data" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="information-about-the-data"><span class="header-section-number">2.1.3</span> Information about the data:</h3>
+<ul>
+<li>The data is available in multiple formats but we have used the .csv file.</li>
+<li>The data contains entries from 2012 to as latest as Nov 25, 2023 and it is updated every week</li>
+<li>There are 29 features and 2,044,903 entries of crashes.<br>
+</li>
+</ul>
+<p>The data includes information about the following:<br>
+</p>
+=======
 <section id="description" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="description"><span class="header-section-number">2.1</span> Description</h2>
 <p>The data includes information about the following:</p>
+
 <ul>
 <li>The date, time, and location of the crash</li>
 <li>The type of crash (e.g., car-to-car, car-to-pedestrian)</li>
@@ -178,6 +214,18 @@ ul.task-list li input[type="checkbox"] {
 <li>The factors that contributed to the crash (e.g., speeding, drunk driving, distracted driving)</li>
 <li>The demographics of the people involved in the crash (e.g., age, gender, race/ethnicity)</li>
 </ul>
+
+</section>
+<section id="issues-with-the-data" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="issues-with-the-data"><span class="header-section-number">2.1.4</span> Issues with the data:</h3>
+<p>One problems with the data is that there are a lot of missing values in many features that need to be handled.</p>
+</section>
+<section id="how-to-import-the-data" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="how-to-import-the-data"><span class="header-section-number">2.1.5</span> How to import the data:</h3>
+<p>We downloaded the data and read it locally as a csv file to analyse it.</p>
+</section>
+=======
+
 </section>
 <section id="research-plan" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="research-plan"><span class="header-section-number">2.2</span> Research Plan</h2>
