@@ -4,20 +4,27 @@
     "href": "index.html",
     "title": "Motor Vehicle Collisions",
     "section": "",
-    "text": "1 Introduction"
+    "text": "1 Introduction\nWe chose to study motor vehicle collisions in the city of New York. More than 46,000 people die in car crashes each year, according to Annual United States Road Crash Statistics (ASIRT). The U.S. traffic fatality rate is 12.4 deaths per 100,000 inhabitants. New York City is the most populous city in the United States with 19.6 million inhabitants. Almost 45 percent of all households in the city own a car. If we were able to study the reasons behind car crashes, we could attempt to implement methods or practices to reduce fatalities per year. Measures such as including more speed breakers or traffic lights in certain intersections that have frequent car crashes, deploying more police patrols at a certain time or place, or revising certain laws and procedures can help prevent a lot of unnecessary loss of life.\n\n\nOur research delves into a multifaceted examination of the geographical and temporal dimensions of car crash collisions within the urban landscape. A main point of interest in our study is where in the city is most susceptible to vehicular collisions. Perhaps road structure, increased traffic, poor speed limits or other factors could lead to increased frequency of collisions in certain areas. Additionally, our study extends to the temporal realm, aiming to discern patterns associated with the occurrence of car crashes. This involves scrutinizing whether discernible weekly or daily trends manifest in the timing and day of the week when collisions are most prevalent. Furthermore, our investigation delves into the root causes behind car crashes such as driver distraction or poor visibility due to weather conditions. We are also interested in the characteristics of the driver. We are particularly interested in demographic variables such as age, gender, and race, recognizing the potential for these factors to play a role in the occurrence and severity of car collisions."
   },
   {
     "objectID": "data.html#description",
     "href": "data.html#description",
     "title": "2  Data",
     "section": "2.1 Description",
-    "text": "2.1 Description"
+    "text": "2.1 Description\nThe data includes information about the following:\n\nThe date, time, and location of the crash\nThe type of crash (e.g., car-to-car, car-to-pedestrian)\nThe severity of the crash (e.g., property damage only, injuries, fatalities)\nThe factors that contributed to the crash (e.g., speeding, drunk driving, distracted driving)\nThe demographics of the people involved in the crash (e.g., age, gender, race/ethnicity)"
+  },
+  {
+    "objectID": "data.html#research-plan",
+    "href": "data.html#research-plan",
+    "title": "2  Data",
+    "section": "2.2 Research Plan",
+    "text": "2.2 Research Plan"
   },
   {
     "objectID": "data.html#missing-value-analysis",
     "href": "data.html#missing-value-analysis",
     "title": "2  Data",
-    "section": "2.2 Missing value analysis",
-    "text": "2.2 Missing value analysis"
+    "section": "2.3 Missing value analysis",
+    "text": "2.3 Missing value analysis"
   }
 ]
