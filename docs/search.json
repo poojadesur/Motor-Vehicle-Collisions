@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Motor Vehicle Collisions",
     "section": "",
-    "text": "1 Introduction"
+    "text": "1 Introduction\nWe chose to study motor vehicle collisions in the city of New York. More than 46,000 people die in car crashes each year, according to Annual United States Road Crash Statistics (ASIRT). The U.S. traffic fatality rate is 12.4 deaths per 100,000 inhabitants. If we were able to study the reasons behind car crashes, we could possibly implement methods or practices to reduce fatalities per year and save lives. Measures such as including more speed breakers or traffic lights in certain intersections that have frequent car crashes, deploying more police patrols at a certain time or place, or revising certain laws and procedures can help prevent a lot of uneccessary loss of life."
   },
   {
     "objectID": "data.html#description",
     "href": "data.html#description",
     "title": "2  Data",
     "section": "2.1 Description",
-    "text": "2.1 Description"
+    "text": "2.1 Description\nThe data includes information about the following:\n\nThe date, time, and location of the crash\nThe type of crash (e.g., car-to-car, car-to-pedestrian)\nThe severity of the crash (e.g., property damage only, injuries, fatalities)\nThe factors that contributed to the crash (e.g., speeding, drunk driving, distracted driving)\nThe demographics of the people involved in the crash (e.g., age, gender, race/ethnicity)"
   },
   {
     "objectID": "data.html#missing-value-analysis",
