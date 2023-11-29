@@ -11,7 +11,7 @@
     "href": "data.html#description",
     "title": "2  Data",
     "section": "2.1 Description",
-    "text": "2.1 Description"
+    "text": "2.1 Description\nThe data includes information about the following:\n\nThe date, time, and location of the crash\nThe type of crash (e.g., car-to-car, car-to-pedestrian)\nThe severity of the crash (e.g., property damage only, injuries, fatalities)\nThe factors that contributed to the crash (e.g., speeding, drunk driving, distracted driving)\nThe demographics of the people involved in the crash (e.g., age, gender, race/ethnicity)"
   },
   {
     "objectID": "data.html#missing-value-analysis",
