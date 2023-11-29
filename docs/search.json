@@ -2,16 +2,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "YOUR PROJECT TITLE",
+    "title": "Motor Vehicle Collisions",
     "section": "",
     "text": "1 Introduction"
   },
   {
-    "objectID": "data.html#description",
-    "href": "data.html#description",
+    "objectID": "data.html#technical-description",
+    "href": "data.html#technical-description",
     "title": "2  Data",
-    "section": "2.1 Description",
-    "text": "2.1 Description\nThe data includes information about the following:\n\nThe date, time, and location of the crash\nThe type of crash (e.g., car-to-car, car-to-pedestrian)\nThe severity of the crash (e.g., property damage only, injuries, fatalities)\nThe factors that contributed to the crash (e.g., speeding, drunk driving, distracted driving)\nThe demographics of the people involved in the crash (e.g., age, gender, race/ethnicity)"
+    "section": "2.1 Technical Description",
+    "text": "2.1 Technical Description\n\n2.1.1 Data Source:\nThe data is taken from the official data catalog of the United States government (data.gov).\n\n\n2.1.2 Data Collection:\nThe Motor Vehicle Collisions crash data contains details on the crash events. Each row represents a crash event. It contain information from all police reported motor vehicle collisions in NYC. The police report (MV104-AN) is required to be filled out for collisions where someone is injured or killed, or where there is at least $1000 worth of damage.\nIt should be noted that the data is preliminary and subject to change when the MV-104AN forms are amended based on revised crash details. The most accurate, up to date statistics on traffic fatalities can be found on NYPD Motor Vehicle Collisions page, which is updated weekly.\n\n\n2.1.3 Information about the data:\n\nThe data is available in multiple formats but we have used the .csv file.\nThe data contains entries from 2012 to as latest as Nov 25, 2023 and it is updated every week\nThere are 29 features and 2,044,903 entries of crashes.\n\n\nThe data includes information about the following:\n\n\nThe date, time, and location of the crash\nThe type of crash (e.g., car-to-car, car-to-pedestrian)\nThe severity of the crash (e.g., property damage only, injuries, fatalities)\nThe factors that contributed to the crash (e.g., speeding, drunk driving, distracted driving)\nThe demographics of the people involved in the crash (e.g., age, gender, race/ethnicity)\n\n\n\n2.1.4 Issues with the data:\nOne problems with the data is that there are a lot of missing values in many features that need to be handled.\n\n\n2.1.5 How to import the data:\nWe downloaded the data and read it locally as a csv file to analyse it."
   },
   {
     "objectID": "data.html#missing-value-analysis",
@@ -19,5 +19,12 @@
     "title": "2  Data",
     "section": "2.2 Missing value analysis",
     "text": "2.2 Missing value analysis"
+  },
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "2  Data",
+    "section": "",
+    "text": "3 Information about the data:\nThe data includes information about the following:\n* The date, time, and location of the crash * The type of crash (e.g., car-to-car, car-to-pedestrian) * The severity of the crash (e.g., property damage only, injuries, fatalities) * The factors that contributed to the crash (e.g., speeding, drunk driving, distracted driving) * The demographics of the people involved in the crash (e.g., age, gender, race/ethnicity)"
   }
 ]
