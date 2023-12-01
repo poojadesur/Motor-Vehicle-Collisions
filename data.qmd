@@ -72,7 +72,7 @@ The data has a lot of missing values in multiple columns that we will have to ha
 data <- read.csv("collisions.csv")
 ```
 
-```{r}
+```{r, warning=FALSE}
 library(dplyr)
 library(ggplot2)
 library(stringr)
