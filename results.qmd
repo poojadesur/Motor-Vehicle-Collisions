@@ -113,8 +113,27 @@ ggplot(summarized_data2, aes(y = DayOfWeek, x = HourOfDay, fill= Frequency )) +
 ## Graph 3: 
 
 ```{r, warning=FALSE}
+#| fig-width: 28
+#| fig-height: 18
+
+# vehicle type
 
 length(unique(data$VEHICLE.TYPE.CODE.1))
+vehicles <- sort(table(data$VEHICLE.TYPE.CODE.1),decreasing = TRUE)[seq(1,30)]
+# Draw a bar graph of most frequent vehicles
+barplot(vehicles, 
+        main = "Bar Graph of Most Frequently Involved Vehicles", 
+        xlab = "Type of Vehicles", 
+        ylab = "Number of cases", 
+        col = "skyblue",
+        names.arg = names(vehicles),
+        las = 2)
+
+
+
+# contributing factor
+length(unique(data$CONTRIBUTING.FACTOR.VEHICLE.1))
+sort(table(data$CONTRIBUTING.FACTOR.VEHICLE.1), decreasing = TRUE)[seq(1,20)]
 
 ```
 ## Graph 4: Stacked Barchart of Fatality_Type with Percentage of Person_Involved_Type
@@ -124,8 +143,8 @@ library(tidyr)
 
 # You can use your entire dataset or filter it based on your analysis needs
 data4 <- data[c("NUMBER.OF.PEDESTRIANS.INJURED", "NUMBER.OF.PEDESTRIANS.KILLED",
-                  "NUMBER.OF.CYCLIST.INJURED", "NUMBER.OF.CYCLIST.KILLED",
-                  "NUMBER.OF.MOTORIST.INJURED", "NUMBER.OF.MOTORIST.KILLED")]
+                "NUMBER.OF.CYCLIST.INJURED", "NUMBER.OF.CYCLIST.KILLED",
+                "NUMBER.OF.MOTORIST.INJURED", "NUMBER.OF.MOTORIST.KILLED")]
 
 # Pivot longer the columns
 data4_long <- data4 %>%
