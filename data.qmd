@@ -41,6 +41,7 @@ VEHICLE TYPE CODE 1-5: These variables categorize the types of vehicles involved
 Identification and Tracking:
 
 COLLISION_ID: This unique identifier serves as the primary key for the dataset, allowing for the tracking and analysis of individual collision records.
+
 In summary, the dataset's rich array of variables facilitates a comprehensive exploration of the spatial, temporal, and causal dimensions of car crash collisions in the city. By leveraging these variables, we can derive meaningful insights into the factors influencing collision patterns and formulate informed recommendations for targeted interventions and policy improvements.
 
 
