@@ -12,68 +12,11 @@ data <-  mutate_all(data, ~ifelse(is.character(.x) & nchar(.x) == 0, NA, .x))
 
 ```
 
-## Graph 1: Crash Severity by Borough
-A bar graph or pie chart to visualize the distribution of crash severity across different boroughs in New York City. This can help identify areas with higher concentrations of severe crashes, allowing for targeted interventions.
+## Graph 1: Crash Frequency by Day of the Week and Time of Day
+
+We have a heatmap to represent the frequency of crashes by day of the week and hour of the day. This reveals the patterns in crash occurrence, suggesting potential countermeasures like increased enforcement or public awareness campaigns during high-risk periods.
 
 ```{r, warning=FALSE}
-
-data1 <- data[c("BOROUGH","NUMBER.OF.PERSONS.INJURED","NUMBER.OF.PERSONS.KILLED")]
-
-# Group by borough and calculate the sum of people killed and injured
-summarized_data1 <- data1 %>%
-  group_by(BOROUGH) %>%
-  summarise(SUM.KILLED = sum(NUMBER.OF.PERSONS.KILLED, na.rm = TRUE),
-            SUM.INJURED = sum(NUMBER.OF.PERSONS.INJURED, na.rm = TRUE))
-
-summarized_data1
-
-# Melt the dataframe to long format for better plotting - like pivot_longer
-library(reshape2)
-long_data1 <- melt(summarized_data1, id.vars = "BOROUGH")
-
-
-# Create a side-by-side bar chart for Number of people killed and injured per borough
-ggplot(long_data1, aes(x = BOROUGH, y = value, fill = variable)) +
-  geom_bar(position = "dodge", stat = "identity", width = 0.7) +
-  labs(title = "Side-by-Side Bar Chart of Number of people killed & Injured",
-       x = "Borough",
-       y = "Count",
-       fill = "Category") +
-  theme_minimal()
-
-```
-
-```{r, warning=FALSE}
-# Create a pie chart for the number of people killed per borough
-ggplot(summarized_data1, aes(x = "", y = SUM.KILLED, fill = BOROUGH)) +
-  geom_bar(stat = "identity", width = 1, color = "white") +
-  geom_text(aes(label = scales::percent(SUM.KILLED / sum(SUM.KILLED, na.rm=TRUE))),
-            position = position_stack(vjust = 0.5), size = 4) +
-  coord_polar("y") +
-  labs(title = "Number of People Killed per Borough",
-       x = "", y = "",
-       fill = "Borough") +
-  theme_minimal() +
-  theme(axis.text.x = element_blank())  # Remove x-axis ticks
-
-# Create a pie chart for the number of people INJURED per borough
-ggplot(summarized_data1, aes(x = "", y = SUM.INJURED, fill = BOROUGH)) +
-  geom_bar(stat = "identity", width = 1, color = "white") +
-  geom_text(aes(label = scales::percent(SUM.INJURED / sum(SUM.INJURED, na.rm=TRUE))),
-            position = position_stack(vjust = 0.5), size = 4) +
-  coord_polar("y") +
-  labs(title = "Number of People Injured per Borough",
-       x = "", y = "",
-       fill = "Borough") +
-  theme_minimal() +
-  theme(axis.text.x = element_blank())  # Remove x-axis ticks
-```
-
-## Graph 2: Crash Frequency by Day of the Week and Time of Day
-A heatmap to represent the frequency of crashes by day of the week and hour of the day. This can reveal patterns in crash occurrence, suggesting potential countermeasures like increased enforcement or public awareness campaigns during high-risk periods.
-
-```{r, warning=FALSE}
-library(chron)
 library(lubridate)
 
 # convert CRASH.DATE column from char to date
@@ -83,13 +26,6 @@ data2 <- data[c("CRASH.DATE", "CRASH.TIME")]
 
 # convert CRASH.TIME column from char to POSIXct time
 data2$CRASH.TIME <- as.POSIXct(data$CRASH.TIME, format = "%H:%M")
-
-
-
-# convert CRASH.DATE column from char to date
-#data2$CRASH.DATE <- as.Date(data2$CRASH.DATE, format = "%m/%d/%y")
-#data2$CRASH.TIME <- chron(times = paste(data2$CRASH.TIME, ":00"))
-#data2$CRASH.TIME <- as.POSIXct(data2$CRASH.TIME, format = "%H:%M")
 
 # Extract day of the week and hour of the day
 data2 <- data2 %>%
@@ -104,7 +40,7 @@ summarized_data2 <- data2 %>%
   group_by(DayOfWeek, HourOfDay) %>%
   summarise(Frequency = n())
 
-summarized_data2
+# summarized_data2
 
 # Create a heatmap
 ggplot(summarized_data2, aes(y = DayOfWeek, x = HourOfDay, fill= Frequency )) +
@@ -118,13 +54,11 @@ ggplot(summarized_data2, aes(y = DayOfWeek, x = HourOfDay, fill= Frequency )) +
 
 ```
 
-## Graph 3: Bargraph & Cleveland for Most Frequently Involved Vehicles and Contributing Factors in Collisions
+From the heatmap above shows that the frequency of collisions has been fairly low after 1AM till 5AM, but as the day goes on, the numbers of collisions increase and it is maximum around 4PM-5PM.
 
-```{r, warning=FALSE}
-#| fig-width: 28
-#| fig-height: 18
+Another insight from the above vizualization is that there is a clear difference in frequency of collisions on Saturday and Sunday, compared to the other days of the week. We can notice that the frequency of collisions on these two days is comparatively less than the other days.
 
-```
+## Graph 2: Most Frequently Involved Vehicles and Contributing Factors in Collisions
 
 ```{r, warning=FALSE}
 
@@ -134,30 +68,20 @@ vehicles <- sort(table(data$VEHICLE.TYPE.CODE.1),decreasing = TRUE)[seq(1,30)]
 # Convert the vehicles vector to a dataframe
 data31 <- data.frame(Values = vehicles)
 colnames(data31) <- c("vehicle", "frequency")
-data31
-
-ggplot(data31, aes(y = frequency, x = vehicle)) +
-  geom_bar(stat = "identity", fill = "skyblue") +
-  labs(title = "Bar Graph with Most Frequently Involved Vehicles", 
-       x = "Vehicles", 
-       y = "Number of Cases") +
-  theme_minimal() +
-  scale_y_continuous(labels = scales::comma) +
-  coord_flip()
+# data31
 
 # Create a Cleveland dot plot
 ggplot(data31, aes(x = vehicle, y = frequency)) +
   geom_point(position = "jitter", color = "blue", size = 2) +
-  labs(title = "Cleveland Dot Plot with Most Frequently Involved Vehicles", 
+  labs(title = "Cleveland Dot Plot with Top 30 Most Frequently Involved Vehicles", 
        x = "Vehicles", 
        y = "Number of Cases") +
   theme_minimal() +
   scale_y_continuous(labels = scales::comma) +
   coord_flip()
-
-
 ```
 
+The bar graph shows that the type of vehicle that has been most frequently involved in the collision cases has been Sedan with over 500K reported cases in the last 11 years, followed by Station Wagon/Sport Utility Vehicle, Passenger Vehicle and Taxi.
 
 ```{r, warning=FALSE}
 
@@ -167,31 +91,27 @@ factors <- sort(table(data$CONTRIBUTING.FACTOR.VEHICLE.1), decreasing = TRUE)[se
 # Convert the factors vector to a dataframe 
 data32 <- data.frame(Values = factors)
 colnames(data32) <- c("factor", "frequency")
-data32
-
-ggplot(data32, aes(y = frequency, x = factor)) +
-  geom_bar(stat = "identity", fill = "skyblue") +
-  labs(title = "Bar Graph with Most Frequently Contributing Factors",
-       x = "Contributing Factors",
-       y = "Number of Cases") +
-  theme_minimal() +
-  scale_y_continuous(labels = scales::comma) +
-  coord_flip()
+# data32
 
 # Create a Cleveland dot plot
 ggplot(data32, aes(x = factor, y = frequency)) +
   geom_point(position = "jitter", color = "blue", size = 2) +
-  labs(title = "Cleveland Dot Plot with Most Frequently Contributing Factors",
+  labs(title = "Cleveland Dot Plot with Top 20 Most Frequently Contributing Factors",
        x = "Contributing Factors",
        y = "Number of Cases") +
   theme_minimal() +
   scale_y_continuous(labels = scales::comma) +
   coord_flip()
-
 ```
 
+As we see, maximum number of cases have unspecified cause of collision (with almost 700K cases).\
+But in known reasons of collision, Driver Inattention or Distraction stands on top. Following that there's failure to yield right-of-way, following the vehicle too closely or backing unsafely.
 
-## Graph 4: Stacked Barchart of Fatality_Type with Percentage of Person_Involved_Type
+It's interesting to notice that alcohol involvement and unsafe speed stand a little less high on the most frequently contributing factors list than they are generally thought to be.
+
+One contributing factor that most people would not guess to be so frequent is Prescription Medication. Almost 20K cases has reported that to be the major contributing factor of collision.
+
+## Graph 3: Relation between Fatality Type and Victim Type
 
 ```{r, warning=FALSE}
 library(tidyr)
@@ -229,7 +149,7 @@ data4_summarized <- data4_summarized %>%
   group_by(fatality_type) %>%
   mutate(percentage = Count / sum(Count))
 
-data4_summarized
+# data4_summarized
 
 #create a stacked bar chart
 ggplot(data4_summarized, aes(x = fatality_type, y=Count, fill = person_involved)) +
@@ -245,7 +165,14 @@ ggplot(data4_summarized, aes(x = fatality_type, y=Count, fill = person_involved)
   theme_minimal()
 ```
 
-## Graph 5: Time Series Plot
+The above stacked bar chart gives some interesting information and comparison in data.
+
+Of all the people who are injured or killed, there is a similar percentage that is cyclists. But percentage of pedestrians killed in collision is thrice the percentage of pedestrians injured. This is opposite for the motorists. This implies that given a person gets into a crash, the chances of them dying are way higher if they are a pedestrian than a motorist.
+
+Of all the people who get killed in collisions, more than 50 percent are pedestrians. This says that pedestrians are the most prone to a serious fatality in a collision.
+
+## Graph 4: Time Series Plot
+
 ```{r, warning=FALSE}
 # Create a new dataset with month-year and count columns
 data5 <- data %>%
@@ -275,13 +202,19 @@ ggplot(data5, aes(x = MonthYear, y = CrashCount, color = BOROUGH)) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year")
 
 ```
-```{r}
 
-```
+The time series plot of case count shows the trends of number of cases over the years in different boroughs of New York and also as a whole ("overall").
 
+The most visible trend in the graph is that there was a major dip in the number of reported collision cases in 2020, which is potentially because of the pandemic and the lockdown. Even though we can see that the cases started to rise after 2020, the numbers have still been nearly half of what it used to be before 2020.
 
-## Graph 6: Mosaic Plot of Age vs Gender vs Type of Passengers
+Brooklyn has been on top when it comes to the number of reported collisions, followed by Queens, Manhattan and Da Bronx. Staten Island has had the least reported cases since 2012, and it is the only borough that did not see any decrease in the number of cases during lockdown.
+
+## Graph 5: Person Age vs Gender vs Type
+
 ```{r, warning=FALSE}
+#| fig-width: 28
+#| fig-height: 18
+
 library(vcd)
 library(ggmosaic)
 
@@ -295,7 +228,8 @@ people_data <- subset(people_data, (PERSON_TYPE == "Occupant" & POSITION_IN_VEHI
 # Replace "Occupant" with "Driver" in the PERSON_TYPE column
 people_data$PERSON_TYPE <- ifelse(people_data$PERSON_TYPE == "Occupant", "Driver", people_data$PERSON_TYPE)
 
-#unique(people_data$PERSON_TYPE)
+#drop the rows where PERSON_SEX is "U"
+people_data <- subset(people_data, PERSON_SEX != "U")
 
 # taking a subset of these three columns only
 data6 <- people_data[c("PERSON_AGE", "PERSON_SEX", "PERSON_TYPE")]
@@ -312,25 +246,15 @@ labels = c("0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79",
 
 # Add a new column 'AgeBin' to the dataframe
 data6 <- data6 %>%
-  mutate(AgeBin = cut(PERSON_AGE, breaks = seq(1, 101, by=10), 
+  mutate(AgeBin = cut(PERSON_AGE, breaks = seq(0, 100, by=10), 
                       labels = labels, 
                       include.lowest = TRUE))
 
 # Create a mosaic plot
-mosaic(AgeBin ~ PERSON_SEX + PERSON_TYPE, 
-       data = data6, 
-       highlighting_fill = c("lightgreen", "cornflowerblue", "orange"), 
-       direction = c("v","h"),
-       axis = TRUE,)
+vcd::mosaic(PERSON_SEX ~ PERSON_TYPE + AgeBin, data = data6, highlighting_fill = c("lightgreen", "cornflowerblue"), main = "Mosaic Plot", direction=c("v","v","h"))
 
 ```
 
+Of all the people getting into collisions, a big majority of them are drivers, and a very few are bicyclists or pedestrians.
 
-
-
-
-
-
-
-
-
+Almost 80% of all bicyclist and 75% of drivers are male. But in case of pedestrians, there is a nearly 50-50 between men and women over all ages.
