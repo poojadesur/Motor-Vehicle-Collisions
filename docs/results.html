@@ -176,12 +176,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#crash-frequency-by-day-of-the-week-and-time-of-day" id="toc-crash-frequency-by-day-of-the-week-and-time-of-day" class="nav-link active" data-scroll-target="#crash-frequency-by-day-of-the-week-and-time-of-day"><span class="header-section-number">3.1</span> Crash Frequency by Day of the Week and Time of Day</a></li>
-  <li><a href="#most-frequently-involved-vehicles" id="toc-most-frequently-involved-vehicles" class="nav-link" data-scroll-target="#most-frequently-involved-vehicles"><span class="header-section-number">3.2</span> Most Frequently Involved Vehicles</a></li>
-  <li><a href="#contributing-factors-in-collisions" id="toc-contributing-factors-in-collisions" class="nav-link" data-scroll-target="#contributing-factors-in-collisions"><span class="header-section-number">3.3</span> Contributing Factors in Collisions</a></li>
-  <li><a href="#relation-between-fatality-type-and-victim-type" id="toc-relation-between-fatality-type-and-victim-type" class="nav-link" data-scroll-target="#relation-between-fatality-type-and-victim-type"><span class="header-section-number">3.4</span> Relation between Fatality Type and Victim Type</a></li>
-  <li><a href="#trends-in-number-of-cases-over-time" id="toc-trends-in-number-of-cases-over-time" class="nav-link" data-scroll-target="#trends-in-number-of-cases-over-time"><span class="header-section-number">3.5</span> Trends in Number of Cases Over Time</a></li>
-  <li><a href="#relation-between-person-age-vs-gender-vs-type" id="toc-relation-between-person-age-vs-gender-vs-type" class="nav-link" data-scroll-target="#relation-between-person-age-vs-gender-vs-type"><span class="header-section-number">3.6</span> Relation between Person Age vs Gender vs Type</a></li>
+  <li><a href="#when-is-it-safe-to-drive-or-walk-basically-get-home-alive" id="toc-when-is-it-safe-to-drive-or-walk-basically-get-home-alive" class="nav-link active" data-scroll-target="#when-is-it-safe-to-drive-or-walk-basically-get-home-alive"><span class="header-section-number">3.1</span> When is it safe to drive or walk (basically get home alive)?</a></li>
+  <li><a href="#should-you-buy-a-sedan" id="toc-should-you-buy-a-sedan" class="nav-link" data-scroll-target="#should-you-buy-a-sedan"><span class="header-section-number">3.2</span> Should you buy a Sedan?</a></li>
+  <li><a href="#what-causes-collisions-to-happen" id="toc-what-causes-collisions-to-happen" class="nav-link" data-scroll-target="#what-causes-collisions-to-happen"><span class="header-section-number">3.3</span> What causes Collisions to happen?</a></li>
+  <li><a href="#who-gets-hurt-and-how" id="toc-who-gets-hurt-and-how" class="nav-link" data-scroll-target="#who-gets-hurt-and-how"><span class="header-section-number">3.4</span> Who gets hurt and how?</a></li>
+  <li><a href="#how-did-the-number-of-collisions-changed-over-time" id="toc-how-did-the-number-of-collisions-changed-over-time" class="nav-link" data-scroll-target="#how-did-the-number-of-collisions-changed-over-time"><span class="header-section-number">3.5</span> How did the number of Collisions changed over time?</a></li>
+  <li><a href="#who-is-more-likely-to-get-involved-in-collisions---demographic-study" id="toc-who-is-more-likely-to-get-involved-in-collisions---demographic-study" class="nav-link" data-scroll-target="#who-is-more-likely-to-get-involved-in-collisions---demographic-study"><span class="header-section-number">3.6</span> Who is more likely to get involved in Collisions? - Demographic Study</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/poojadesur/Motor-Vehicle-Collisions/edit/main/results.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/poojadesur/Motor-Vehicle-Collisions/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -235,8 +235,8 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span>  <span class="fu">mutate_all</span>(data, <span class="sc">~</span><span class="fu">ifelse</span>(<span class="fu">is.character</span>(.x) <span class="sc">&amp;</span> <span class="fu">nchar</span>(.x) <span class="sc">==</span> <span class="dv">0</span>, <span class="cn">NA</span>, .x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="crash-frequency-by-day-of-the-week-and-time-of-day" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="crash-frequency-by-day-of-the-week-and-time-of-day"><span class="header-section-number">3.1</span> Crash Frequency by Day of the Week and Time of Day</h2>
+<section id="when-is-it-safe-to-drive-or-walk-basically-get-home-alive" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="when-is-it-safe-to-drive-or-walk-basically-get-home-alive"><span class="header-section-number">3.1</span> When is it safe to drive or walk (basically get home alive)?</h2>
 <p>We have a heatmap to represent the frequency of crashes by day of the week and hour of the day. This reveals the patterns in crash occurrence, suggesting potential countermeasures like increased enforcement or public awareness campaigns during high-risk periods.</p>
 <div class="cell">
 <details>
@@ -300,8 +300,8 @@ Attaching package: 'lubridate'</code></pre>
 <p>From the heatmap above shows that the frequency of collisions has been fairly low after 1AM till 5AM, but as the day goes on, the numbers of collisions increase and it is maximum around 4PM-5PM.</p>
 <p>Another insight from the above vizualization is that there is a clear difference in frequency of collisions on Saturday and Sunday, compared to the other days of the week. We can notice that the frequency of collisions on these two days is comparatively less than the other days.</p>
 </section>
-<section id="most-frequently-involved-vehicles" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="most-frequently-involved-vehicles"><span class="header-section-number">3.2</span> Most Frequently Involved Vehicles</h2>
+<section id="should-you-buy-a-sedan" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="should-you-buy-a-sedan"><span class="header-section-number">3.2</span> Should you buy a Sedan?</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -329,8 +329,8 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 <p>The bar graph shows that the type of vehicle that has been most frequently involved in the collision cases has been Sedan with over 500K reported cases in the last 11 years, followed by Station Wagon/Sport Utility Vehicle, Passenger Vehicle and Taxi.</p>
 </section>
-<section id="contributing-factors-in-collisions" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="contributing-factors-in-collisions"><span class="header-section-number">3.3</span> Contributing Factors in Collisions</h2>
+<section id="what-causes-collisions-to-happen" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="what-causes-collisions-to-happen"><span class="header-section-number">3.3</span> What causes Collisions to happen?</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -361,8 +361,8 @@ But in known reasons of collision, Driver Inattention or Distraction stands on t
 <p>It’s interesting to notice that alcohol involvement and unsafe speed stand a little less high on the most frequently contributing factors list than they are generally thought to be.</p>
 <p>One contributing factor that most people would not guess to be so frequent is Prescription Medication. Almost 20K cases has reported that to be the major contributing factor of collision.</p>
 </section>
-<section id="relation-between-fatality-type-and-victim-type" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="relation-between-fatality-type-and-victim-type"><span class="header-section-number">3.4</span> Relation between Fatality Type and Victim Type</h2>
+<section id="who-gets-hurt-and-how" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="who-gets-hurt-and-how"><span class="header-section-number">3.4</span> Who gets hurt and how?</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -424,8 +424,8 @@ But in known reasons of collision, Driver Inattention or Distraction stands on t
 <p>Of all the people who are injured or killed, there is a similar percentage that is cyclists. But percentage of pedestrians killed in collision is thrice the percentage of pedestrians injured. This is opposite for the motorists. This implies that given a person gets into a crash, the chances of them dying are way higher if they are a pedestrian than a motorist.</p>
 <p>Of all the people who get killed in collisions, more than 50 percent are pedestrians. This says that pedestrians are the most prone to a serious fatality in a collision.</p>
 </section>
-<section id="trends-in-number-of-cases-over-time" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="trends-in-number-of-cases-over-time"><span class="header-section-number">3.5</span> Trends in Number of Cases Over Time</h2>
+<section id="how-did-the-number-of-collisions-changed-over-time" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="how-did-the-number-of-collisions-changed-over-time"><span class="header-section-number">3.5</span> How did the number of Collisions changed over time?</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -470,8 +470,8 @@ But in known reasons of collision, Driver Inattention or Distraction stands on t
 <p>The most visible trend in the graph is that there was a major dip in the number of reported collision cases in 2020, which is potentially because of the pandemic and the lockdown. Even though we can see that the cases started to rise after 2020, the numbers have still been nearly half of what it used to be before 2020.</p>
 <p>Brooklyn has been on top when it comes to the number of reported collisions, followed by Queens, Manhattan and Da Bronx. Staten Island has had the least reported cases since 2012, and it is the only borough that did not see any decrease in the number of cases during lockdown.</p>
 </section>
-<section id="relation-between-person-age-vs-gender-vs-type" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="relation-between-person-age-vs-gender-vs-type"><span class="header-section-number">3.6</span> Relation between Person Age vs Gender vs Type</h2>
+<section id="who-is-more-likely-to-get-involved-in-collisions---demographic-study" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="who-is-more-likely-to-get-involved-in-collisions---demographic-study"><span class="header-section-number">3.6</span> Who is more likely to get involved in Collisions? - Demographic Study</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
