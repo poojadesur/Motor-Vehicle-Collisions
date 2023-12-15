@@ -78,7 +78,47 @@ function handleClickSet2(borough) {
   console.log("Selected borough from Set 2: " + borough);
 }
 
-function getSignificance() {
+function printKilledOutput(){
+
+    let key1 = `${borough1}_${year1}`;
+    let key2 = `${borough2}_${year2}`;
+
+    if (isSig === 'True') {
+      if (aggregatedDatawKey[key1].killed > aggregatedDatawKey[key2].killed)
+      {
+        displayText = "There is a statistically significant difference between the populations. This means one is much more dangerous than the other." + borough1 + " in " + year1  + "had much more deaths."}
+      else
+      {
+         displayText = "There is a statistically significant difference between the populations. This means one is much more dangerous than the other." + borough2 + " in " + year2  + "had much more deaths."}
+      }
+    else{
+      displayText = "There is no statistically significant difference between the populations. This means the boroughs and the timeframes provided are not that different from each other.";
+    }
+
+    }
+
+
+function printInjuredOutput(){
+
+    let key1 = `${borough1}_${year1}`;
+    let key2 = `${borough2}_${year2}`;
+
+    if (isSig === 'True') {
+      if (aggregatedDatawKey[key1].injured > aggregatedDatawKey[key2].injured)
+      {
+        displayText = "There is a statistically significant difference between the populations. This means one is much more dangerous than the other." + borough1 + " in " + year1  + "had much more deaths."}
+      else
+      {
+         displayText = "There is a statistically significant difference between the populations. This means one is much more dangerous than the other." + borough2 + " in " + year2  + "had much more deaths."}
+      }
+    else{
+      displayText = "There is no statistically significant difference between the populations. This means the boroughs and the timeframes provided are not that different from each other.";
+    }
+
+    }
+
+
+function getKilledSignificance() {
   let key1 = `${borough1}_${year1}`;
   let key2 = `${borough2}_${year2}`;
   console.log(key1, key2)
@@ -87,6 +127,19 @@ function getSignificance() {
   let deadliness2 = aggregatedDatawKey[key2].killed / aggregatedDatawKey[key2].total
 
   computeSignificance(deadliness1, deadliness2, aggregatedDatawKey[key1].total, aggregatedDatawKey[key2].total)
+  printKilledOutput();
+}
+
+function getInjuredSignificance() {
+  let key1 = `${borough1}_${year1}`;
+  let key2 = `${borough2}_${year2}`;
+  console.log(key1, key2)
+  console.log(aggregatedDatawKey)
+  let deadliness1 = aggregatedDatawKey[key1].injured / aggregatedDatawKey[key1].total
+  let deadliness2 = aggregatedDatawKey[key2].injured / aggregatedDatawKey[key2].total
+
+  computeSignificance(deadliness1, deadliness2, aggregatedDatawKey[key1].total, aggregatedDatawKey[key2].total)
+  printInjuredOutput();
 }
 
 // Array to store fetched data from CSVs
@@ -183,7 +236,7 @@ function processData(data) {
 
 // Function to create a bar chart for number of people killed
 function createBarChartForKilled(data) {
-  const margin = { top: 30, right: 30, bottom: 60, left: 60 };
+  const margin = { top: 30, right: 30, bottom: 80, left: 60 };
   const width = 300 - margin.left - margin.right;
   const height = 400 - margin.top - margin.bottom;
 
@@ -228,10 +281,6 @@ function createBarChartForKilled(data) {
     .style("font-size", "18px")
     .text("People Killed in 2021 and 2022");
 
-  svgKilled.append("text")
-    .attr("transform", `translate(${width / 2},${height + margin.top + 20})`)
-    .style("text-anchor", "middle")
-    .text("Boroughs");
 
   svgKilled.append("text")
     .attr("transform", "rotate(-90)")
@@ -247,7 +296,7 @@ function createBarChartForKilled(data) {
 
 // Function to create a bar chart for number of people injured
 function createBarChartForInjured(data) {
-  const margin = { top: 30, right: 30, bottom: 60, left: 60 };
+  const margin = { top: 30, right: 30, bottom: 80, left: 60 };
   const width = 300 - margin.left - margin.right;
   const height = 400 - margin.top - margin.bottom;
 
@@ -285,10 +334,6 @@ function createBarChartForInjured(data) {
     .attr("transform", "rotate(-45)") // Rotates the text by -45 degrees
     .style("text-anchor", "end"); // Adjusts text anchor
 
-  svgInjured.append("text")
-    .attr("transform", `translate(${width / 2},${height + margin.top + 20})`)
-    .style("text-anchor", "middle")
-    .text("Boroughs");
 
     svgInjured.append("text")
     .attr("x", width / 2)
