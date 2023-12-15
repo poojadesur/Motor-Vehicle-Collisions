@@ -12,7 +12,7 @@ data <-  mutate_all(data, ~ifelse(is.character(.x) & nchar(.x) == 0, NA, .x))
 
 ```
 
-## Graph 1: Crash Frequency by Day of the Week and Time of Day
+## Crash Frequency by Day of the Week and Time of Day
 
 We have a heatmap to represent the frequency of crashes by day of the week and hour of the day. This reveals the patterns in crash occurrence, suggesting potential countermeasures like increased enforcement or public awareness campaigns during high-risk periods.
 
@@ -58,7 +58,7 @@ From the heatmap above shows that the frequency of collisions has been fairly lo
 
 Another insight from the above vizualization is that there is a clear difference in frequency of collisions on Saturday and Sunday, compared to the other days of the week. We can notice that the frequency of collisions on these two days is comparatively less than the other days.
 
-## Graph 2: Most Frequently Involved Vehicles and Contributing Factors in Collisions
+## Most Frequently Involved Vehicles
 
 ```{r, warning=FALSE}
 
@@ -82,6 +82,8 @@ ggplot(data31, aes(x = vehicle, y = frequency)) +
 ```
 
 The bar graph shows that the type of vehicle that has been most frequently involved in the collision cases has been Sedan with over 500K reported cases in the last 11 years, followed by Station Wagon/Sport Utility Vehicle, Passenger Vehicle and Taxi.
+
+## Contributing Factors in Collisions
 
 ```{r, warning=FALSE}
 
@@ -111,7 +113,7 @@ It's interesting to notice that alcohol involvement and unsafe speed stand a lit
 
 One contributing factor that most people would not guess to be so frequent is Prescription Medication. Almost 20K cases has reported that to be the major contributing factor of collision.
 
-## Graph 3: Relation between Fatality Type and Victim Type
+## Relation between Fatality Type and Victim Type
 
 ```{r, warning=FALSE}
 library(tidyr)
@@ -171,7 +173,7 @@ Of all the people who are injured or killed, there is a similar percentage that 
 
 Of all the people who get killed in collisions, more than 50 percent are pedestrians. This says that pedestrians are the most prone to a serious fatality in a collision.
 
-## Graph 4: Time Series Plot
+## Trends in Number of Cases Over Time
 
 ```{r, warning=FALSE}
 # Create a new dataset with month-year and count columns
@@ -209,7 +211,7 @@ The most visible trend in the graph is that there was a major dip in the number 
 
 Brooklyn has been on top when it comes to the number of reported collisions, followed by Queens, Manhattan and Da Bronx. Staten Island has had the least reported cases since 2012, and it is the only borough that did not see any decrease in the number of cases during lockdown.
 
-## Graph 5: Person Age vs Gender vs Type
+## Relation between Person Age vs Gender vs Type
 
 ```{r, warning=FALSE}
 #| fig-width: 28
