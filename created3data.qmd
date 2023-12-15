@@ -1,0 +1,74 @@
+
+```{r}
+library(dplyr)
+data <- read.csv("./collisions1.csv")
+data <-  mutate_all(data, ~ifelse(is.character(.x) & nchar(.x) == 0, NA, .x))
+```
+
+```{r}
+# Convert 'crash.date' to Date format
+data$CRASH.DATE <- as.Date(data$CRASH.DATE, format = "%m/%d/%Y")
+```
+
+```{r}
+data_not_null <- data[complete.cases(data[, c("NUMBER.OF.PERSONS.KILLED", "NUMBER.OF.PERSONS.INJURED")]), ]
+```
+
+```{r}
+subset_list <- split(data, data$BOROUGH)
+sum(is.na(subset_list[0]$BOROUGH))
+```
+
+```{r}
+# Split the data into a list of data frames by 'borough'
+subset_list_by_borough <- split(data, data$BOROUGH)
+
+# Initialize an empty list to store subsets by borough and year
+subset_list_by_borough_and_year <- list()
+
+# Loop through each borough subset
+for (borough_subset in names(subset_list_by_borough)) {
+  # Filter each borough subset for the year 2021 and store in a list
+  subset_2021 <- subset(subset_list_by_borough[[borough_subset]], format(CRASH.DATE, "%Y") == "2021" & (NUMBER.OF.PERSONS.KILLED > 0 | NUMBER.OF.PERSONS.INJURED > 0))
+  subset_2022 <- subset(subset_list_by_borough[[borough_subset]], format(CRASH.DATE, "%Y") == "2022"  & (NUMBER.OF.PERSONS.KILLED > 0 | NUMBER.OF.PERSONS.INJURED > 0) )
+  
+  # Store the subsets for the current borough and year in the list
+  subset_list_by_borough_and_year[[paste(borough_subset, "_2021", sep = "")]] <- subset_2021
+  subset_list_by_borough_and_year[[paste(borough_subset, "_2022", sep = "")]] <- subset_2022
+}
+
+```
+
+```{r}
+# Directory to save CSV files
+output_directory <- "./d3data/"
+
+# Loop through each subset and save as CSV
+for (subset_name in names(subset_list_by_borough_and_year)) {
+  subset_data <- subset_list_by_borough_and_year[[subset_name]]
+  subset_data_selected <- subset_data[, c("COLLISION_ID", "NUMBER.OF.PERSONS.KILLED", "NUMBER.OF.PERSONS.INJURED")]
+  filename <- paste(output_directory, subset_name, ".csv", sep = "")
+  write.csv(subset_data_selected, file = filename, row.names = FALSE)
+}
+```
+
+
+
+```{r}
+# Initialize a list to store counts per subset
+counts_per_subset <- list()
+
+# Loop through each subset and calculate the count of people killed
+for (subset_name in names(subset_list_by_borough_and_year)) {
+  subset_data <- subset_list_by_borough_and_year[[subset_name]]
+  count_killed <- sum(subset_data$NUMBER.OF.PERSONS.KILLED, na.rm = TRUE)
+  counts_per_subset[[subset_name]] <- count_killed
+}
+
+# Display counts per subset
+for (subset_name in names(counts_per_subset)) {
+  print(paste("Subset:", subset_name, "- Number of people killed:", counts_per_subset[[subset_name]]))
+}
+```
+
+

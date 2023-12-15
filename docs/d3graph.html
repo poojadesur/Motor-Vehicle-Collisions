@@ -168,16 +168,47 @@ ul.task-list li input[type="checkbox"] {
 <div id="plot">
 
 </div>
-<div style="padding-left: 30px;">
+<h3 class="anchored">
+Compare The Deadliness of Two Boroughs over the Time Periods 2021 and 2022.
+</h3>
+<p>
+Comparisions are based on the z-test for significance of pairs. Choose buttons below based on which two sets over time and borough you would like to compare. For example, choosing 2021 and Brooklyn for Set 1 and 2022 and Manhattan for Set 2 allows us to compare if Manhattan in 2022 was more dangerous in terms of recorded automobile crashes than Brooklyn in 2021. The danger here is computed by the number of people injured/total number of car crashes.
+</p>
+
+
+<h5 class="anchored">
+Set 1 - Year Selection
+</h5>
+<form>
+<input type="radio" id="set1_year_2021" name="set1_year" value="2021" onclick="handleClickSet1Year(this.value)"> <label for="set1_year_2021">2021</label><br> <input type="radio" id="set1_year_2022" name="set1_year" value="2022" onclick="handleClickSet1Year(this.value)"> <label for="set1_year_2022">2022</label><br>
+</form>
+<h5 class="anchored">
+Set 2 - Year Selection
+</h5>
+<form>
+<input type="radio" id="set2_year_2021" name="set2_year" value="2021" onclick="handleClickSet2Year(this.value)"> <label for="set2_year_2021">2021</label><br> <input type="radio" id="set2_year_2022" name="set2_year" value="2022" onclick="handleClickSet2Year(this.value)"> <label for="set2_year_2022">2022</label><br>
+</form>
+<hr>
+<h5 class="anchored">
+Set 1 - Borough
+</h5>
+<form>
+<input type="radio" id="set1_bronx" name="set1_borough" value="BRONX" onclick="handleClickSet1(this.value)"> <label for="set1_bronx">Bronx</label><br> <input type="radio" id="set1_brooklyn" name="set1_borough" value="BROOKLYN" onclick="handleClickSet1(this.value)"> <label for="set1_brooklyn">Brooklyn</label><br> <input type="radio" id="set1_manhattan" name="set1_borough" value="MANHATTAN" onclick="handleClickSet1(this.value)"> <label for="set1_manhattan">Manhattan</label><br> <input type="radio" id="set1_queens" name="set1_borough" value="QUEENS" onclick="handleClickSet1(this.value)"> <label for="set1_queens">Queens</label><br> <input type="radio" id="set1_statenIsland" name="set1_borough" value="STATENISLAND" onclick="handleClickSet1(this.value)"> <label for="set1_statenIsland">Staten Island</label><br>
+</form>
+<hr>
+<h5 class="anchored">
+Set 2 - Borough
+</h5>
+<form>
+<input type="radio" id="set2_bronx" name="set2_borough" value="BRONX" onclick="handleClickSet2(this.value)"> <label for="set2_bronx">Bronx</label><br> <input type="radio" id="set2_brooklyn" name="set2_borough" value="BROOKLYN" onclick="handleClickSet2(this.value)"> <label for="set2_brooklyn">Brooklyn</label><br> <input type="radio" id="set2_manhattan" name="set2_borough" value="MANHATTAN" onclick="handleClickSet2(this.value)"> <label for="set2_manhattan">Manhattan</label><br> <input type="radio" id="set2_queens" name="set2_borough" value="QUEENS" onclick="handleClickSet2(this.value)"> <label for="set2_queens">Queens</label><br> <input type="radio" id="set2_statenIsland" name="set2_borough" value="STATENISLAND" onclick="handleClickSet2(this.value)"> <label for="set2_statenIsland">Staten Island</label><br>
+</form>
 <p>
 </p>
-<button type="button" onclick="add()">
-Add bar to the right
-</button>
-<button type="button" onclick="remove()">
-Remove bar
-</button>
-</div>
+<p><button type="button" onclick="getSignificance()">Compute Significance</button></p>
+<p id="displayText">
+Are these two sets statistically significantly different from the other?
+</p>
+
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="scripts/myscript.js"></script>
 
