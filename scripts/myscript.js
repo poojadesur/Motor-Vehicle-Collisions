@@ -165,7 +165,7 @@ const files = [
 
 // Fetch data from each file
 const promises = files.map(file => {
-  return d3.csv(`https://raw.githubusercontent.com/poojadesur/Motor-Vehicle-Collisions/d3/d3data/${file}`)
+  return d3.csv(`https://raw.githubusercontent.com/poojadesur/Motor-Vehicle-Collisions/d3data/${file}`)
     .then(data => {
       allData = allData.concat(data);
       if(fileRowCount.length == 0)
