@@ -56,7 +56,7 @@ ggplot(summarized_data2, aes(y = DayOfWeek, x = HourOfDay, fill= Frequency )) +
 
 From the heatmap above shows that the frequency of collisions has been fairly low after 1AM till 5AM, but as the day goes on, the numbers of collisions increase and it is maximum around 4PM-5PM.
 
-Another insight from the above vizualization is that there is a clear difference in frequency of collisions on Saturday and Sunday, compared to the other days of the week. We can notice that the frequency of collisions on these two days is comparatively less than the other days.
+Another insight from the above visualization is that there is a clear difference in frequency of collisions on Saturday and Sunday, compared to the other days of the week. We can notice that the frequency of collisions on these two days is comparatively less than the other days.
 
 ## Should you buy a Sedan?
 
@@ -173,7 +173,7 @@ Of all the people who are injured or killed, there is a similar percentage that 
 
 Of all the people who get killed in collisions, more than 50 percent are pedestrians. This says that pedestrians are the most prone to a serious fatality in a collision.
 
-## How did the number of Collisions changed over time? 
+## How did the number of Collisions changed over time?
 
 ```{r, warning=FALSE}
 # Create a new dataset with month-year and count columns
